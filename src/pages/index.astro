@@ -1,0 +1,133 @@
+---
+import { getCollection } from "astro:content";
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import Link from "@components/Link.astro";
+import { dateRange } from "@lib/utils";
+import { SITE, HOME, SOCIALS } from "@consts";
+
+const blog = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const projects = (await getCollection("projects"))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
+const allwork = (await getCollection("work"))
+  .sort(
+    (a, b) =>
+      new Date(b.data.dateStart).valueOf() -
+      new Date(a.data.dateStart).valueOf()
+  )
+  .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
+
+const work = await Promise.all(
+  allwork.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  })
+);
+---
+
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <div class="space-y-10">
+      <section class="animate">
+        <h4 class="font-semibold text-black dark:text-white">
+          Hi, I'm Manuel
+        </h4>
+        <article>
+          <p>
+            Engineering Manager, AI at Aircall. 12+ years building
+            data-driven products and leading engineering teams at Aircall,
+            Klaviyo, Shopify, and BBVA. I lived 4 years in San Francisco
+            and 3 years in Boston before moving back to Madrid.
+          </p>
+          <p>
+            I love building digital products, at scale, with great UX — and
+            building highly functional and engaged teams to make it happen.
+          </p>
+          <p>
+            Passionate about science, data, Machine Learning, generative AI,
+            real-time systems, voice processing, NLP, and edge AI (Core ML).
+            Also into iOS development, finance, and tech.
+          </p>
+        </article>
+      </section>
+
+      <section class="animate">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">Latest posts</h5>
+          <Link href="/blog">See all posts</Link>
+        </div>
+        <div class="flex flex-col gap-4 mt-4">
+          {blog.map((post) => (
+            <ArrowCard entry={post} />
+          ))}
+        </div>
+      </section>
+
+      <section class="animate">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">Work Experience</h5>
+          <Link href="/work">See all work</Link>
+        </div>
+        <div class="flex flex-col gap-4 mt-4">
+          {work.map((entry) => (
+            <div>
+              <div class="text-sm opacity-75">
+                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+              </div>
+              <div class="font-semibold text-black dark:text-white">
+                {entry.data.company}
+              </div>
+              <div class="text-sm opacity-75">
+                {entry.data.role}
+              </div>
+              <article>
+                <entry.Content />
+              </article>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="animate">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">Recent projects</h5>
+          <Link href="/projects">See all projects</Link>
+        </div>
+        <div class="flex flex-col gap-4 mt-4">
+          {projects.map((project) => (
+            <ArrowCard entry={project} />
+          ))}
+        </div>
+      </section>
+
+      <section class="animate">
+        <h5 class="font-semibold text-black dark:text-white">Let's Connect</h5>
+        <article>
+          <p>
+            If you want to get in touch about something or just say hi,
+            reach out on social media or send me an email.
+          </p>
+        </article>
+        <div class="flex flex-wrap gap-1 mt-2">
+          {SOCIALS.map((SOCIAL) => (
+            <Link href={SOCIAL.HREF} external>
+              {SOCIAL.NAME}
+            </Link>
+            <span>{" / "}</span>
+          ))}
+          <Link href={`mailto:${SITE.EMAIL}`}>
+            {SITE.EMAIL}
+          </Link>
+        </div>
+      </section>
+    </div>
+  </Container>
+</PageLayout>
