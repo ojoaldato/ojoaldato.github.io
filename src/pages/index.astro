@@ -7,6 +7,8 @@ import Link from "@components/Link.astro";
 import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 
+const yearsSince2013 = new Date().getFullYear() - 2013;
+
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -42,14 +44,17 @@ const work = await Promise.all(
         </h4>
         <article>
           <p>
-            12+ years building
-            data-driven products and leading engineering teams at Aircall,
-            Klaviyo, Shopify, and BBVA. I lived 4 years in San Francisco
-            and 3 years in Boston before moving back to Madrid.
+            Building professional software since 2013. That's {yearsSince2013}+
+            years of data-driven products and engineering teams at Aircall,
+            Klaviyo, Shopify, and BBVA.
           </p>
           <p>
-            I love building digital products, at scale, with great UX — and
-            building highly functional and engaged teams to make it happen.
+            Born in Marbella. Raised in Madrid. Built in the US.
+            (Assembled in California.)
+          </p>
+          <p>
+            I love building digital products, at scale, with great UX,
+            and building highly functional, engaged teams to make it happen.
           </p>
           <p>
             Passionate about science, data, Machine Learning, generative AI,
