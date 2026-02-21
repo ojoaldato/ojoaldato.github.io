@@ -1,7 +1,7 @@
 import type { Site, Metadata, Socials } from "@types";
 
 export const SITE: Site = {
-  NAME: "Manuel Ventero",
+  NAME: "Manu Ventero",
   EMAIL: "manuel@ojoaldato.com",
   NUM_POSTS_ON_HOMEPAGE: 3,
   NUM_WORKS_ON_HOMEPAGE: 3,
@@ -9,7 +9,7 @@ export const SITE: Site = {
 };
 
 export const HOME: Metadata = {
-  TITLE: "Home",
+  TITLE: "Data, AI & Leadership",
   DESCRIPTION:
     "AI, ML, and software lead who codes. Building data-driven products and leading engineering teams.",
 };
