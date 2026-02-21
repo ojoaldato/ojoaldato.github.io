@@ -2,7 +2,6 @@
 title: "Shopify Protect"
 description: "Full-stack, ML-driven fraud protection for Shop Pay merchants worldwide."
 date: 2022-06-01
-location: "San Francisco"
 demoURL: "https://www.shopify.com/protect"
 ---
 

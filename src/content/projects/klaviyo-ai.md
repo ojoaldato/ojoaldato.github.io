@@ -2,7 +2,6 @@
 title: "Klaviyo Customer Agent"
 description: "AI-powered sales and service assistant that recommends, converts, and resolves across channels."
 date: 2024-06-01
-location: "Boston"
 demoURL: "https://www.klaviyo.com/solutions/ai/customer-agent"
 ---
 

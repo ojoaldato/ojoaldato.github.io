@@ -45,8 +45,8 @@ const work = await Promise.all(
         <article>
           <p>
             {yearsSince2013}+ years shaping data-driven products and leading
-            high-impact engineering teams at Aircall, Klaviyo, Shopify,
-            and BBVA.
+            high-impact engineering, data, and ML teams at Aircall, Klaviyo,
+            Shopify, and BBVA.
           </p>
           <p>
             Born in Marbella. Raised in Madrid. Rewired in the US.
@@ -102,6 +102,7 @@ const work = await Promise.all(
             <div>
               <div class="text-sm opacity-75">
                 {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                {entry.data.location && ` · ${entry.data.location}`}
               </div>
               <div class="font-semibold text-black dark:text-white">
                 {entry.data.company}

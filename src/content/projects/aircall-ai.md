@@ -2,7 +2,6 @@
 title: "Aircall AI Assist"
 description: "AI-powered conversation intelligence for sales and support teams on Aircall's voice platform."
 date: 2026-01-01
-location: "Madrid & Paris"
 demoURL: "https://aircall.io/products/ai/"
 ---
 
