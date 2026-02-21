@@ -135,19 +135,18 @@ const work = await Promise.all(
         <article>
           <p>
             If you want to get in touch about something or just say hi,
-            reach out on social media or send me an email.
+            reach out on social media.
           </p>
         </article>
         <div class="flex flex-wrap gap-1 mt-2">
-          {SOCIALS.map((SOCIAL) => (
-            <Link href={SOCIAL.HREF} external>
-              {SOCIAL.NAME}
-            </Link>
-            <span>{" / "}</span>
+          {SOCIALS.map((SOCIAL, i) => (
+            <>
+              {i > 0 && <span>{" / "}</span>}
+              <Link href={SOCIAL.HREF} external>
+                {SOCIAL.NAME}
+              </Link>
+            </>
           ))}
-          <Link href={`mailto:${SITE.EMAIL}`}>
-            {SITE.EMAIL}
-          </Link>
         </div>
       </section>
     </div>
