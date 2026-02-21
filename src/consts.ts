@@ -9,7 +9,7 @@ export const SITE: Site = {
 };
 
 export const HOME: Metadata = {
-  TITLE: "Data, AI & Leadership",
+  TITLE: "Software, Data & AI",
   DESCRIPTION:
     "AI, ML, and software lead who codes. Building data-driven products and leading engineering teams.",
 };
