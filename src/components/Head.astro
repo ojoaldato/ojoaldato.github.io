@@ -51,6 +51,18 @@ const { title, description, image = "/og.png" } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
+{SITE.GOOGLE_ANALYTICS_ID && SITE.GOOGLE_ANALYTICS_ID !== "G-XXXXXXXXXX" && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.GOOGLE_ANALYTICS_ID}`}></script>
+    <script is:inline define:vars={{ gaId: SITE.GOOGLE_ANALYTICS_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gaId);
+    </script>
+  </>
+)}
+
 <ClientRouter />
 
 <script is:inline>
