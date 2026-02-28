@@ -69,6 +69,10 @@ dateEnd: "Present"
 
 Edit `src/consts.ts` for name, email, socials, and homepage settings.
 
+## Analytics
+
+[Google Analytics Dashboard](https://analytics.google.com/analytics/web/#/a385817752p526348411/admin/streams/table/)
+
 ## Deployment
 
 Pushes to `master` auto-deploy via GitHub Actions (`.github/workflows/deploy.yml`).
